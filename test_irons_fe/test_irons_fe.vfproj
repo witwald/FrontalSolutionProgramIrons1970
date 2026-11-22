@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectCreator="Intel Fortran" Keyword="Console Application" Version="11.0" ProjectIdGuid="{5E9D2954-FF81-4935-AC2F-8A5CC46FD336}">
+	<Platforms>
+		<Platform Name="x64"/>
+	</Platforms>
+	<Configurations>
+		<Configuration Name="Debug|x64" UseCompiler="ifortCompiler" OutputDirectory="$(SolutionDir)$(Platform)\$(Configuration)" IntermediateDirectory="$(Platform)\$(Configuration)">
+			<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebug"/>
+			<Tool Name="VFLinkerTool" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemConsole" LinkIncrementally="linkIncrementalNo"/>
+			<Tool Name="VFResourceCompilerTool"/>
+			<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+			<Tool Name="VFCustomBuildTool"/>
+			<Tool Name="VFPreLinkEventTool"/>
+			<Tool Name="VFPreBuildEventTool"/>
+			<Tool Name="VFPostBuildEventTool"/>
+			<Tool Name="VFManifestTool" SuppressStartupBanner="true"/>
+		</Configuration>
+		<Configuration Name="Release|x64" UseCompiler="ifortCompiler" OutputDirectory="$(SolutionDir)$(Platform)\$(Configuration)" IntermediateDirectory="$(Platform)\$(Configuration)">
+			<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" Optimization="optimizeFull"/>
+			<Tool Name="VFLinkerTool" SuppressStartupBanner="true" SubSystem="subSystemConsole" LinkIncrementally="linkIncrementalNo"/>
+			<Tool Name="VFResourceCompilerTool"/>
+			<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+			<Tool Name="VFCustomBuildTool"/>
+			<Tool Name="VFPreLinkEventTool"/>
+			<Tool Name="VFPreBuildEventTool"/>
+			<Tool Name="VFPostBuildEventTool"/>
+			<Tool Name="VFManifestTool" SuppressStartupBanner="true"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl;F90;FOR;F;FPP;FTN;DEF;ODL;IDL">
+			<File RelativePath="..\src\test_irons_fe.f90"/>
+			<File RelativePath="..\src\zcapture.f90"/>
+			<File RelativePath="..\src\zipp.f"/>
+		</Filter>
+	</Files>
+	<Globals/>
+</VisualStudioProject>

@@ -1,0 +1,106 @@
+ Irons (1970) Appendix III specimen data, run through ZIPP
+ (full printer listing in irons_appendix3.lis)
+
+ Problem 1 (output by elements) and its re-solution with 2 RHS
+   nickname   solution        exact         | re-solve RHS 1   exact          | re-solve RHS 2   exact
+       2     0.5000000000   0.5000000000     2.0000000000   2.0000000000     0.5000000000   0.5000000000
+       3     0.2482269504   0.2482269504     0.4326241135   0.4326241135     0.3617021277   0.3617021277
+       4     0.3829787234   0.3829787234     1.5531914894   1.5531914894     1.8723404255   1.8723404255
+       5     2.2056737589   2.2056737589     0.8156028369   0.8156028369     2.0425531915   2.0425531915
+   RHS set 1:  relative error = 2.52E-17   relative residual ||b-Ax||/||b|| = 9.12E-17
+   RHS set 2:  relative error = 5.55E-17   relative residual ||b-Ax||/||b|| = 5.05E-17
+   RHS set 3:  relative error = 2.72E-17   relative residual ||b-Ax||/||b|| = 3.17E-17
+
+ Problem 2 (entire output, element nicknames 5,89,5)
+   nickname   solution        exact
+       5     1.0000000000   1.0000000000
+      89    -0.5000000000  -0.5000000000
+   relative error = 0.00E+00   relative residual ||b-Ax||/||b|| = 0.00E+00
+   entire output vector has MAXNIC = 89 entries (unused nicknames give zero)
+
+ Pivots taken: 6;  largest Irons roundoff criterion CRIT =  3.00E+00
+
+ ALL APPENDIX III CHECKS PASSED
+ Irons (1970) frontal solver ZIPP - finite element tests
+ (accuracy measures are accumulated in quad precision; listings in irons_fe_*.lis)
+
+ A. Two-bay, two-storey frame of Hoit (1986) Fig. 1 (18 equations, 10 elements)
+   a1 (entire output)
+     equations 18, load cases 2, largest front 18, largest CRIT  4.19E+01, CRIT warnings 0
+     pass  solution           ||b-Ax||/||b||   ||x-x_ref||/||x_ref||   ||dx||/||x||
+       1  frontal solve           1.12E-14            1.32E-14        -
+   ok      solution accuracy against quad-precision reference
+     Displacements (entire output):          load case 1: lateral                load case 2: gravity on beams
+     node      u            v          theta       |      u            v          theta
+     mid-left     1.01251E+00  9.08254E-03 -1.98144E-01   | -3.40253E-03 -1.83370E-02 -3.98083E-02
+     mid-mid      1.00103E+00 -1.19819E-04 -1.11501E-01   | -9.08386E-18 -4.33260E-02  0.00000E+00
+     mid-right    9.93886E-01 -8.96272E-03 -1.94063E-01   |  3.40253E-03 -1.83370E-02  3.98083E-02
+     top-left     1.98550E+00  1.22038E-02 -1.09493E-01   |  5.73744E-03 -2.72861E-02 -6.67606E-02
+     top-mid      1.95806E+00 -1.62608E-04 -5.51537E-02   | -4.08612E-17 -6.54278E-02  5.52099E-18
+     top-right    1.94816E+00 -1.20412E-02 -1.07129E-01   | -5.73744E-03 -2.72861E-02  6.67606E-02
+   a2 (output by elements)
+     equations 18, load cases 2, largest front 18, largest CRIT  4.19E+01, CRIT warnings 0
+     pass  solution           ||b-Ax||/||b||   ||x-x_ref||/||x_ref||   ||dx||/||x||
+       1  frontal solve           1.12E-14            1.32E-14        -
+   ok      solution accuracy against quad-precision reference
+   ok   A  entire output and output by elements give identical answers
+
+ B. Three-bay, fifteen-storey frame with springs (180 equations, 108 elements, 3 load cases)
+   b1 (sequential nicknames, whole elements)
+     equations 180, load cases 3, largest front 17, largest CRIT  2.03E+01, CRIT warnings 0
+     pass  solution           ||b-Ax||/||b||   ||x-x_ref||/||x_ref||   ||dx||/||x||
+       1  frontal solve           1.62E-13            3.91E-14            3.89E-14
+       2  + refinement 1          7.28E-15            7.31E-16        -
+   ok      solution + refinement accuracy against quad-precision reference
+   b2 (scrambled nicknames, 60-word buffer, MAXELT=20)
+     equations 180, load cases 3, largest front 17, largest CRIT  2.03E+01, CRIT warnings 0
+     pass  solution           ||b-Ax||/||b||   ||x-x_ref||/||x_ref||   ||dx||/||x||
+       1  frontal solve           1.62E-13            3.91E-14            3.89E-14
+       2  + refinement 1          7.28E-15            7.31E-16        -
+   ok      solution + refinement accuracy against quad-precision reference
+     elements written as 209 tape segments (108 elements)
+     largest front (MAXPA) = 17 for both numberings; semi-bandwidth: 159 (sequential), 96542 (scrambled)
+     answers, scrambled vs sequential nicknames: max relative difference  0.00E+00
+   ok   B  front width independent of nickname order (Irons, note (c))
+   ok   B  same answers for scrambled nicknames and fragmented elements
+   b3 (nearly rigid beams (EA x 10**4), 2 refinement passes)
+     equations 180, load cases 3, largest front 17, largest CRIT  1.82E+05, CRIT warnings 13
+     pass  solution           ||b-Ax||/||b||   ||x-x_ref||/||x_ref||   ||dx||/||x||
+       1  frontal solve           1.30E-09            6.68E-10            6.68E-10
+       2  + refinement 1          2.26E-15            2.72E-16            3.54E-16
+       3  + refinement 2          9.96E-16            3.03E-16        -
+   ok   refinement by re-solution reduces the error at least 1000-fold
+   ok   B3 Irons CRIT warns of possible roundoff trouble (CRIT > 1E4)
+
+ C. Cantilever, 10 x 2 eight-node quadrilaterals, plane stress, penalty supports
+   c (MAXELT=40: each element in 5 segments)
+     equations 170, load cases 2, largest front 20, largest CRIT  4.18E+03, CRIT warnings 0
+     pass  solution           ||b-Ax||/||b||   ||x-x_ref||/||x_ref||   ||dx||/||x||
+       1  frontal solve           9.98E-13            3.41E-13            3.39E-13
+       2  + refinement 1          2.86E-15            2.18E-15        -
+   ok      solution + refinement accuracy against quad-precision reference
+     largest front (MAXPA) = 20;  semi-bandwidth of the numbering = 21
+     Load case 1, tip shear P = 1 (parabolic), deflection of the beam axis:
+          x       frontal FE       beam theory     ratio
+        1.00    7.891816E-03    8.625000E-03   0.9150
+        3.00    6.377594E-02    6.487500E-02   0.9831
+        5.00    1.617794E-01    1.631250E-01   0.9918
+        7.00    2.897887E-01    2.913750E-01   0.9946
+        9.00    4.357996E-01    4.376250E-01   0.9958
+       10.00    5.117972E-01    5.137500E-01   0.9962  <- tip
+     Load case 2, tip tension P = 1: tip extension  4.98489E-03;  PL/EA =  5.00000E-03;  ratio  0.9970
+   ok   C  tip deflection within 2% of Timoshenko-Goodier
+   ok   C  tip extension within 3% of PL/EA
+     Reactions recovered as R = -1E20 x (Appendix IV 1(b)) against the applied loads:
+                   sum Rx          sum Ry          applied Fx      applied Fy
+     load case 1   2.48689958E-13  1.00000000E+00  0.00000000E+00 -1.00000000E+00
+     load case 2  -1.00000000E+00 -4.72538675E-15  1.00000000E+00  0.00000000E+00
+     equilibrium error max|sum R + sum F| =  1.06E-12
+   ok   C  reactions balance the applied loads (|R+F| < 1E-10)
+
+ D. Fig. 1 frame with its supports removed ("flying structure")
+   d (expect JWHERE 13 or 14)
+     ZIPP stopped with JWHERE = 14,  CRIT =  7.73E+29
+   ok   D  singular stiffness diagnosed (JWHERE = 13 or 14)
+
+ ALL FINITE ELEMENT CHECKS PASSED
