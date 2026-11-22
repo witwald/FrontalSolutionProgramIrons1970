@@ -24,7 +24,7 @@
 !
 ! REFERENCES:
 !
-! Irons, B.M. (1970. A frontal solution program for finite element
+! Irons, B.M. (1970). A frontal solution program for finite element
 ! analysis. International Journal of Numerical Methods in Engineering,
 ! Volume 2, pages 5-32.  https://doi.org/10.1002/nme.1620020104
 
